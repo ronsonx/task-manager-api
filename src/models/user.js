@@ -59,16 +59,16 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.findByCredentials = async (email, password) =>{
     const user = await User.findOne({email})
     if(!user){
-        console.log('no user found')
+        //console.log('no user found')
         throw new Error({code: 401, error: 'Unauthorized'})
         
     }
     const isMatch = await bcrypt.compare(password, user.password)
     if(!isMatch){
-        console.log('password not matching')
+        //console.log('password not matching')
         throw new Error({code: 401, error: 'Unauthorized'})
     }
-    console.log('user found')
+    //console.log('user found')
     return user
 }
 

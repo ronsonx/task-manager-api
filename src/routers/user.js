@@ -39,7 +39,7 @@ router.post('/api/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(200).send({ user, token })
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         res.status(401).send({ code: 401, error: 'Unauthorized' })
     }
 })
@@ -80,7 +80,7 @@ router.patch('/api/users/me', auth,async (req, res) => {
         user.save()
         res.status(202).send(user)
     } catch (error) {
-        res.status(500).send(error)
+        res.status(400).send(error)
     }
 })
 
